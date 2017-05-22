@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>index</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>Cadastro de usuário:</p>
+	<form  action="#" th:action="@{/user/save}" th:object="${user}" method="post">
+		<input type="hidden" th:field="*{id}"/>
+		<div><label>Nome de usuário:</label><input type="text" th:field="*{username}"/></div>
+		<div><label>Senha:</label><input type="text" th:field="*{password}"/></div>
+		<div><label>Habilitado:</label><input type="checkbox" th:field="*{isEnabled}"/></div>
+		<div><label>Data de registro:</label><input type="text" th:field="*{registerDate}"/></div>
+		<div><label>Nome:</label><input type="text" th:field="*{name}"/></div>
+		<div><label>Sobrenome:</label><input type="text" th:field="*{surname}"/></div>
+		<div><label>Email:</label><input type="text" th:field="*{email}"/></div>
+		<div><label>Telefone:</label><input type="text" th:field="*{phone}"/></div>
+		<button type="submit" name="save" >salvar</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+   <p><a th:href="@{/user/new}">Novo</a></p>
+
+   <form  action="#" th:action="@{/user/search}" th:object="${user}" method="post">
+		<div><label>Nome de usuário:</label><input type="text" th:field="*{username}"/></div>
+		<div><label>Nome:</label><input type="text" th:field="*{name}"/></div>
+		<div><label>Email:</label><input type="text" th:field="*{email}"/></div>
+		<button type="submit" name="search" >Pesquisar</button>
+	</form>	
+   <table>
+	  <thead>
+	    <tr>
+	      <th>Username</th>
+	      <th>Name</th>
+	      <th>Email</th>
+	      <th>editar</th>
+	      <th>excluir</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr th:each="user: ${usersList}">
+	      <td th:text="${user.username}">"${user.username}"</td>
+	      <td th:text="${user.name}">"${user.name}"</td>
+	      <td th:text="${user.email}">"${user.email}"</td>
+	      <td><a th:href="@{/user/edit(id=${user.id})}">[E]</a></td>
+	      <td><a th:href="@{/user/delete(id=${user.id})}">[D]</a></td>
+	    </tr>
+	  </tbody>
+	</table>
+</body>
+</html>

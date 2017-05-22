@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="teste.fabio.users.mapper.UserMapper" >
+<cache/>
+	
+	<insert id="insertUser" parameterType="teste.fabio.users.domain.User" useGeneratedKeys="true">
+		insert into teste_fabio.usuarios (username, password, is_enabled, name, surname, email, phone) values 
+		(#{username}, #{password}, #{isEnabled}, #{name}, #{surname}, #{email}, #{phone})
+	</insert>
+	
+	<select id="findAllUsers" resultType="teste.fabio.users.domain.User">
+		select * from teste_fabio.usuarios
+	</select>
+	
+	<select id="findUserById" resultType="teste.fabio.users.domain.User">
+		select * from teste_fabio.usuarios where id = #{param1}
+	</select>
+	
+	<update id="updateUser" parameterType="teste.fabio.users.domain.User">
+		update teste_fabio.usuarios set username=#{username},
+		password=#{password}, is_enabled=#{isEnabled}, name=#{name},
+		surname=#{surname},email=#{email},phone=#{phone}
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteUser">
+		delete from teste_fabio.usuarios where id = #{param1}
+	</delete>
+	
+    <select id="findUser" resultType="teste.fabio.users.domain.User" parameterType="teste.fabio.users.domain.User">
+        select * from teste_fabio.usuarios
+        <where>
+            <if test='!"".equals(username)'>
+                username = #{username}
+            </if>
+            <if test='!"".equals(name)'>
+                and name like '%' || #{name} || '%'
+            </if>
+            <if test='!"".equals(email)'>
+                and email like '%' || #{email} || '%'
+            </if>
+   
+        </where>
+    </select>
+
+</mapper>
