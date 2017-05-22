@@ -2,6 +2,7 @@ package teste.fabio.users.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,7 +22,7 @@ public class User implements Serializable{
 	private String username;
     private String password;
     private Boolean isEnabled;
-    private LocalDate registerDate;
+    private LocalDateTime registerDate;
     private String name;
     private String surname;
     private String email;

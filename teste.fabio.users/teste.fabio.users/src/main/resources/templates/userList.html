@@ -17,17 +17,26 @@
 	  <thead>
 	    <tr>
 	      <th>Username</th>
-	      <th>Name</th>
+	      <th>Habilitado</th>
+	      <th>Data de registro</th>
+	      <th>Nome</th>
+	      <th>sobrenome</th>
 	      <th>Email</th>
-	      <th>editar</th>
-	      <th>excluir</th>
+	      <th>Telefone</th>
+	      <th></th>
+	      <th></th>
 	    </tr>
 	  </thead>
 	  <tbody>
 	    <tr th:each="user: ${usersList}">
 	      <td th:text="${user.username}">"${user.username}"</td>
+	      <td th:text="${user.isEnabled}">"${user.isEnabled}"</td>
+	      <td th:text="${user.registerDate}">"${user.registerDate}"</td>
 	      <td th:text="${user.name}">"${user.name}"</td>
+	      <td th:text="${user.surname}">"${user.surname}"</td>
 	      <td th:text="${user.email}">"${user.email}"</td>
+	      <td th:text="${user.phone}">"${user.phone}"</td>
+
 	      <td><a th:href="@{/user/edit(id=${user.id})}">[E]</a></td>
 	      <td><a th:href="@{/user/delete(id=${user.id})}">[D]</a></td>
 	    </tr>
